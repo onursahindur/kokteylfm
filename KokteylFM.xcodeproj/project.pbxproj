@@ -1,0 +1,577 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		31E0A9032976A5B8F624D3FE /* libPods-KokteylFM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77E87DF98D616D7811308FED /* libPods-KokteylFM.a */; };
+		620CFB861E153B1E0025210E /* RadioListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 620CFB841E153B1E0025210E /* RadioListCollectionViewCell.m */; };
+		620CFB871E153B1E0025210E /* RadioListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 620CFB851E153B1E0025210E /* RadioListCollectionViewCell.xib */; };
+		620CFB8A1E153EEB0025210E /* AudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 620CFB891E153EEB0025210E /* AudioManager.m */; };
+		628E1C261E157C3D00CF90B0 /* RadioTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 628E1C241E157C3D00CF90B0 /* RadioTableViewCell.m */; };
+		628E1C271E157C3D00CF90B0 /* RadioTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 628E1C251E157C3D00CF90B0 /* RadioTableViewCell.xib */; };
+		629117171E145674007502D1 /* KFMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 629117151E145674007502D1 /* KFMViewController.m */; };
+		629117181E145674007502D1 /* KFMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 629117161E145674007502D1 /* KFMViewController.xib */; };
+		629117221E146A84007502D1 /* KFMRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 629117201E146A84007502D1 /* KFMRadioViewController.m */; };
+		629117231E146A84007502D1 /* KFMRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 629117211E146A84007502D1 /* KFMRadioViewController.xib */; };
+		62C3F28F1E14513A00F1904F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 62C3F28E1E14513A00F1904F /* main.m */; };
+		62C3F2921E14513A00F1904F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 62C3F2911E14513A00F1904F /* AppDelegate.m */; };
+		62C3F29A1E14513A00F1904F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62C3F2991E14513A00F1904F /* Assets.xcassets */; };
+		62C3F29D1E14513A00F1904F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C3F29B1E14513A00F1904F /* LaunchScreen.storyboard */; };
+		62C3F2A81E14513A00F1904F /* KokteylFMTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 62C3F2A71E14513A00F1904F /* KokteylFMTests.m */; };
+		62ED259E1E18A74F00DD7C3A /* ChatCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 62ED259C1E18A74F00DD7C3A /* ChatCollectionViewCell.m */; };
+		62ED259F1E18A74F00DD7C3A /* ChatCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62ED259D1E18A74F00DD7C3A /* ChatCollectionViewCell.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		62C3F2A41E14513A00F1904F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 62C3F2821E14513A00F1904F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 62C3F2891E14513A00F1904F;
+			remoteInfo = KokteylFM;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		620CFB831E153B1E0025210E /* RadioListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioListCollectionViewCell.h; sourceTree = "<group>"; };
+		620CFB841E153B1E0025210E /* RadioListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioListCollectionViewCell.m; sourceTree = "<group>"; };
+		620CFB851E153B1E0025210E /* RadioListCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioListCollectionViewCell.xib; sourceTree = "<group>"; };
+		620CFB881E153EEB0025210E /* AudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioManager.h; sourceTree = "<group>"; };
+		620CFB891E153EEB0025210E /* AudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioManager.m; sourceTree = "<group>"; };
+		628E1C231E157C3D00CF90B0 /* RadioTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioTableViewCell.h; sourceTree = "<group>"; };
+		628E1C241E157C3D00CF90B0 /* RadioTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioTableViewCell.m; sourceTree = "<group>"; };
+		628E1C251E157C3D00CF90B0 /* RadioTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioTableViewCell.xib; sourceTree = "<group>"; };
+		629117141E145674007502D1 /* KFMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFMViewController.h; sourceTree = "<group>"; };
+		629117151E145674007502D1 /* KFMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFMViewController.m; sourceTree = "<group>"; };
+		629117161E145674007502D1 /* KFMViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KFMViewController.xib; sourceTree = "<group>"; };
+		6291171F1E146A84007502D1 /* KFMRadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFMRadioViewController.h; sourceTree = "<group>"; };
+		629117201E146A84007502D1 /* KFMRadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFMRadioViewController.m; sourceTree = "<group>"; };
+		629117211E146A84007502D1 /* KFMRadioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KFMRadioViewController.xib; sourceTree = "<group>"; };
+		62C3F28A1E14513A00F1904F /* KokteylFM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KokteylFM.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		62C3F28E1E14513A00F1904F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		62C3F2901E14513A00F1904F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		62C3F2911E14513A00F1904F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		62C3F2991E14513A00F1904F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		62C3F29C1E14513A00F1904F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		62C3F29E1E14513A00F1904F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62C3F2A31E14513A00F1904F /* KokteylFMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KokteylFMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		62C3F2A71E14513A00F1904F /* KokteylFMTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KokteylFMTests.m; sourceTree = "<group>"; };
+		62C3F2A91E14513A00F1904F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62C3F2B21E1451CB00F1904F /* KFMPrefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFMPrefix.pch; sourceTree = "<group>"; };
+		62ED259B1E18A74F00DD7C3A /* ChatCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCollectionViewCell.h; sourceTree = "<group>"; };
+		62ED259C1E18A74F00DD7C3A /* ChatCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCollectionViewCell.m; sourceTree = "<group>"; };
+		62ED259D1E18A74F00DD7C3A /* ChatCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatCollectionViewCell.xib; sourceTree = "<group>"; };
+		77E87DF98D616D7811308FED /* libPods-KokteylFM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KokteylFM.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		95E10CE809085B24DE69A96A /* Pods-KokteylFM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KokteylFM.release.xcconfig"; path = "Pods/Target Support Files/Pods-KokteylFM/Pods-KokteylFM.release.xcconfig"; sourceTree = "<group>"; };
+		D9D06B275FF64239EC6C1F77 /* Pods-KokteylFM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KokteylFM.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KokteylFM/Pods-KokteylFM.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		62C3F2871E14513A00F1904F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31E0A9032976A5B8F624D3FE /* libPods-KokteylFM.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62C3F2A01E14513A00F1904F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		33DAAABF8979BFDE853B45D4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D9D06B275FF64239EC6C1F77 /* Pods-KokteylFM.debug.xcconfig */,
+				95E10CE809085B24DE69A96A /* Pods-KokteylFM.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		620CFB821E153B020025210E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				628E1C221E157C2100CF90B0 /* TableViewCells */,
+				620CFB831E153B1E0025210E /* RadioListCollectionViewCell.h */,
+				620CFB841E153B1E0025210E /* RadioListCollectionViewCell.m */,
+				620CFB851E153B1E0025210E /* RadioListCollectionViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		628E1C221E157C2100CF90B0 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				628E1C231E157C3D00CF90B0 /* RadioTableViewCell.h */,
+				628E1C241E157C3D00CF90B0 /* RadioTableViewCell.m */,
+				628E1C251E157C3D00CF90B0 /* RadioTableViewCell.xib */,
+				62ED259B1E18A74F00DD7C3A /* ChatCollectionViewCell.h */,
+				62ED259C1E18A74F00DD7C3A /* ChatCollectionViewCell.m */,
+				62ED259D1E18A74F00DD7C3A /* ChatCollectionViewCell.xib */,
+			);
+			name = TableViewCells;
+			sourceTree = "<group>";
+		};
+		629117131E14564D007502D1 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				629117141E145674007502D1 /* KFMViewController.h */,
+				629117151E145674007502D1 /* KFMViewController.m */,
+				629117161E145674007502D1 /* KFMViewController.xib */,
+				6291171F1E146A84007502D1 /* KFMRadioViewController.h */,
+				629117201E146A84007502D1 /* KFMRadioViewController.m */,
+				629117211E146A84007502D1 /* KFMRadioViewController.xib */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		62C3F2811E14513A00F1904F = {
+			isa = PBXGroup;
+			children = (
+				62C3F28C1E14513A00F1904F /* KokteylFM */,
+				62C3F2A61E14513A00F1904F /* KokteylFMTests */,
+				62C3F28B1E14513A00F1904F /* Products */,
+				33DAAABF8979BFDE853B45D4 /* Pods */,
+				7F2AC2726EDFEDEF4BAAA263 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		62C3F28B1E14513A00F1904F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				62C3F28A1E14513A00F1904F /* KokteylFM.app */,
+				62C3F2A31E14513A00F1904F /* KokteylFMTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		62C3F28C1E14513A00F1904F /* KokteylFM */ = {
+			isa = PBXGroup;
+			children = (
+				62C3F2901E14513A00F1904F /* AppDelegate.h */,
+				62C3F2911E14513A00F1904F /* AppDelegate.m */,
+				62C3F2991E14513A00F1904F /* Assets.xcassets */,
+				62C3F29B1E14513A00F1904F /* LaunchScreen.storyboard */,
+				62C3F29E1E14513A00F1904F /* Info.plist */,
+				629117131E14564D007502D1 /* View Controllers */,
+				620CFB821E153B020025210E /* Cells */,
+				62C3F28D1E14513A00F1904F /* Supporting Files */,
+				620CFB881E153EEB0025210E /* AudioManager.h */,
+				620CFB891E153EEB0025210E /* AudioManager.m */,
+			);
+			path = KokteylFM;
+			sourceTree = "<group>";
+		};
+		62C3F28D1E14513A00F1904F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				62C3F28E1E14513A00F1904F /* main.m */,
+				62C3F2B21E1451CB00F1904F /* KFMPrefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		62C3F2A61E14513A00F1904F /* KokteylFMTests */ = {
+			isa = PBXGroup;
+			children = (
+				62C3F2A71E14513A00F1904F /* KokteylFMTests.m */,
+				62C3F2A91E14513A00F1904F /* Info.plist */,
+			);
+			path = KokteylFMTests;
+			sourceTree = "<group>";
+		};
+		7F2AC2726EDFEDEF4BAAA263 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77E87DF98D616D7811308FED /* libPods-KokteylFM.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		62C3F2891E14513A00F1904F /* KokteylFM */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62C3F2AC1E14513A00F1904F /* Build configuration list for PBXNativeTarget "KokteylFM" */;
+			buildPhases = (
+				854F4723125346976CB24099 /* [CP] Check Pods Manifest.lock */,
+				62C3F2861E14513A00F1904F /* Sources */,
+				62C3F2871E14513A00F1904F /* Frameworks */,
+				62C3F2881E14513A00F1904F /* Resources */,
+				9A7CB1F7A347AFEE73D2A27A /* [CP] Embed Pods Frameworks */,
+				D7A6969B023BEB826B219E23 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KokteylFM;
+			productName = KokteylFM;
+			productReference = 62C3F28A1E14513A00F1904F /* KokteylFM.app */;
+			productType = "com.apple.product-type.application";
+		};
+		62C3F2A21E14513A00F1904F /* KokteylFMTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62C3F2AF1E14513A00F1904F /* Build configuration list for PBXNativeTarget "KokteylFMTests" */;
+			buildPhases = (
+				62C3F29F1E14513A00F1904F /* Sources */,
+				62C3F2A01E14513A00F1904F /* Frameworks */,
+				62C3F2A11E14513A00F1904F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				62C3F2A51E14513A00F1904F /* PBXTargetDependency */,
+			);
+			name = KokteylFMTests;
+			productName = KokteylFMTests;
+			productReference = 62C3F2A31E14513A00F1904F /* KokteylFMTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		62C3F2821E14513A00F1904F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = onursahindur;
+				TargetAttributes = {
+					62C3F2891E14513A00F1904F = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = NC8H5NJHD9;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+					62C3F2A21E14513A00F1904F = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 62C3F2891E14513A00F1904F;
+					};
+				};
+			};
+			buildConfigurationList = 62C3F2851E14513A00F1904F /* Build configuration list for PBXProject "KokteylFM" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 62C3F2811E14513A00F1904F;
+			productRefGroup = 62C3F28B1E14513A00F1904F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				62C3F2891E14513A00F1904F /* KokteylFM */,
+				62C3F2A21E14513A00F1904F /* KokteylFMTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		62C3F2881E14513A00F1904F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				629117181E145674007502D1 /* KFMViewController.xib in Resources */,
+				62C3F29D1E14513A00F1904F /* LaunchScreen.storyboard in Resources */,
+				62ED259F1E18A74F00DD7C3A /* ChatCollectionViewCell.xib in Resources */,
+				620CFB871E153B1E0025210E /* RadioListCollectionViewCell.xib in Resources */,
+				62C3F29A1E14513A00F1904F /* Assets.xcassets in Resources */,
+				629117231E146A84007502D1 /* KFMRadioViewController.xib in Resources */,
+				628E1C271E157C3D00CF90B0 /* RadioTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62C3F2A11E14513A00F1904F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		854F4723125346976CB24099 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9A7CB1F7A347AFEE73D2A27A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KokteylFM/Pods-KokteylFM-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D7A6969B023BEB826B219E23 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KokteylFM/Pods-KokteylFM-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		62C3F2861E14513A00F1904F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				620CFB8A1E153EEB0025210E /* AudioManager.m in Sources */,
+				62ED259E1E18A74F00DD7C3A /* ChatCollectionViewCell.m in Sources */,
+				62C3F2921E14513A00F1904F /* AppDelegate.m in Sources */,
+				62C3F28F1E14513A00F1904F /* main.m in Sources */,
+				629117171E145674007502D1 /* KFMViewController.m in Sources */,
+				620CFB861E153B1E0025210E /* RadioListCollectionViewCell.m in Sources */,
+				628E1C261E157C3D00CF90B0 /* RadioTableViewCell.m in Sources */,
+				629117221E146A84007502D1 /* KFMRadioViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62C3F29F1E14513A00F1904F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62C3F2A81E14513A00F1904F /* KokteylFMTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		62C3F2A51E14513A00F1904F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 62C3F2891E14513A00F1904F /* KokteylFM */;
+			targetProxy = 62C3F2A41E14513A00F1904F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		62C3F29B1E14513A00F1904F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				62C3F29C1E14513A00F1904F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		62C3F2AA1E14513A00F1904F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		62C3F2AB1E14513A00F1904F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		62C3F2AD1E14513A00F1904F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9D06B275FF64239EC6C1F77 /* Pods-KokteylFM.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = KokteylFM/KFMPrefix.pch;
+				INFOPLIST_FILE = KokteylFM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.eg.EGRadyo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		62C3F2AE1E14513A00F1904F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95E10CE809085B24DE69A96A /* Pods-KokteylFM.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = KokteylFM/KFMPrefix.pch;
+				INFOPLIST_FILE = KokteylFM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.eg.EGRadyo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		62C3F2B01E14513A00F1904F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = KokteylFMTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.onursahindur.KokteylFMTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KokteylFM.app/KokteylFM";
+			};
+			name = Debug;
+		};
+		62C3F2B11E14513A00F1904F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = KokteylFMTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.onursahindur.KokteylFMTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KokteylFM.app/KokteylFM";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		62C3F2851E14513A00F1904F /* Build configuration list for PBXProject "KokteylFM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62C3F2AA1E14513A00F1904F /* Debug */,
+				62C3F2AB1E14513A00F1904F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		62C3F2AC1E14513A00F1904F /* Build configuration list for PBXNativeTarget "KokteylFM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62C3F2AD1E14513A00F1904F /* Debug */,
+				62C3F2AE1E14513A00F1904F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		62C3F2AF1E14513A00F1904F /* Build configuration list for PBXNativeTarget "KokteylFMTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62C3F2B01E14513A00F1904F /* Debug */,
+				62C3F2B11E14513A00F1904F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 62C3F2821E14513A00F1904F /* Project object */;
+}
