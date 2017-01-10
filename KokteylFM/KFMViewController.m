@@ -7,16 +7,27 @@
 //
 
 #import "KFMViewController.h"
+#import "AudioManager.h"
 #import "RadioListCollectionViewCell.h"
 #import "ChatCollectionViewCell.h"
 
-@interface KFMViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface KFMViewController () <UICollectionViewDelegate, UICollectionViewDataSource,
+                                        UIWebViewDelegate, RadioListCollectionViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView                 *barView;
 @property (weak, nonatomic) IBOutlet UIView                 *mediaView;
 @property (weak, nonatomic) IBOutlet UICollectionView       *collectionView;
-@property (weak, nonatomic) IBOutlet UIButton *radioListButton;
-@property (weak, nonatomic) IBOutlet UIButton *chatButton;
+@property (weak, nonatomic) IBOutlet UIButton               *radioListButton;
+@property (weak, nonatomic) IBOutlet UIButton               *chatButton;
+
+// Media Buttons
+@property (weak, nonatomic) IBOutlet UIButton *playButton;
+@property (weak, nonatomic) IBOutlet UIButton *nextStationButton;
+@property (weak, nonatomic) IBOutlet UIButton *prevStationButton;
+
+@property (assign, nonatomic) NSInteger currentStationIndex;
+@property (strong, nonatomic) NSURL *currentStationURL;
+@property (strong, nonatomic) NSString *currentStationName;
 
 @end
 
@@ -30,8 +41,8 @@
 
 - (void)initUI
 {
-    self.barView.layer.cornerRadius = 20.0f;
-    self.barView.layer.masksToBounds = YES;
+//    self.barView.layer.cornerRadius = 20.0f;
+//    self.barView.layer.masksToBounds = YES;
     
     self.mediaView.layer.cornerRadius = 10.0f;
     self.mediaView.layer.masksToBounds = YES;
@@ -39,6 +50,8 @@
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"RadioListCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"RadioListCollectionViewCell"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"ChatCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"ChatCollectionViewCell"];
+    
+    self.prevStationButton.enabled = NO;
 }
 
 #pragma mark - UICollectionView Delegate & DataSource
@@ -47,17 +60,20 @@
     return 1;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section
 {
     return 2;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
     if (indexPath.row == 0)
     {
-        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RadioListCollectionViewCell" forIndexPath:indexPath];
+        RadioListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RadioListCollectionViewCell" forIndexPath:indexPath];
+        cell.delegate = self;
         return cell;
     }
     else
@@ -65,11 +81,14 @@
         ChatCollectionViewCell *cell = (ChatCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"ChatCollectionViewCell" forIndexPath:indexPath];
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://kokteyl.fm/chat/"]];
         [cell.webView loadRequest:request];
+        cell.webView.delegate = self;
         return cell;
     }
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout*)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return CGSizeMake(CGRectGetWidth(collectionView.frame), CGRectGetHeight(collectionView.frame));
 }
@@ -87,5 +106,95 @@
     }
 }
 
+- (IBAction)tappedMediaButtons:(UIButton *)sender
+{
+    if (sender == self.playButton)
+    {
+        if ([AudioManager sharedInstance].playing)
+        {
+            [[AudioManager sharedInstance] pausePlaying];
+        }
+        else
+        {
+            [[AudioManager sharedInstance] startPlaying];
+        }
+        [self setPlayingButtonState:[AudioManager sharedInstance].playing];
+    }
+    else if (sender == self.nextStationButton)
+    {
+        RadioListCollectionViewCell *cell = (RadioListCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+        [self startPlaying:[cell nextStationURL] radioName:@""];
+        self.nextStationButton.enabled = [cell hasMoreNext];
+        self.prevStationButton.enabled = YES;
+    }
+    else if (sender == self.prevStationButton)
+    {
+        RadioListCollectionViewCell *cell = (RadioListCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+        [self startPlaying:[cell previousStationURL] radioName:@""];
+        self.nextStationButton.enabled = YES;
+        self.prevStationButton.enabled = [cell hasMorePrev];
+    }
+    [self setPlayingButtonState:[AudioManager sharedInstance].playing];
+}
+
+#pragma mark - WebView Delegate
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+//    [MBProgressHUD showHUDAddedTo:webView animated:YES];
+    [SVProgressHUD show];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+//    [MBProgressHUD hideHUDForView:webView animated:YES];
+    [SVProgressHUD dismiss];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    //    [MBProgressHUD hideHUDForView:webView animated:YES];
+    [SVProgressHUD dismiss];
+}
+
+#pragma mark - RadioListCollectionViewCell Delegate
+- (void)radioListCollectionViewCell:(RadioListCollectionViewCell *)cell
+                     didSelectRadio:(NSURL *)radioURL
+                      withRadioName:(NSString *)radioName
+                withBackgroundColor:(UIColor *)color
+{
+    self.currentStationURL = radioURL;
+    self.currentStationName = radioName;
+    [self setPlayingButtonState:YES];
+    self.nextStationButton.enabled = [cell hasMoreNext];
+    self.prevStationButton.enabled = [cell hasMorePrev];
+    __weak typeof (self) weakSelf = self;
+    [UIView animateWithDuration:2.0 animations:^{
+        weakSelf.barView.layer.backgroundColor = color.CGColor;
+        [weakSelf.view layoutIfNeeded];
+    } completion:nil];
+    [self startPlaying:radioURL
+             radioName:radioName];
+}
+
+
+#pragma mark - Helpers
+- (void)startPlaying:(NSURL *)radioURL
+           radioName:(NSString *)radioName
+{
+    [[AudioManager sharedInstance] prepareToPlay:radioURL];
+    [[AudioManager sharedInstance] changeNowPlayingInfo:@"Kokteyl FM"
+                                               songName:radioName];
+    [[AudioManager sharedInstance] startPlaying];
+}
+
+- (void)setPlayingButtonState:(BOOL)playing
+{
+    NSString *imageName = @"play";
+    if (playing)
+    {
+        imageName = @"pause";
+    }
+    [self.playButton setBackgroundImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+}
 
 @end

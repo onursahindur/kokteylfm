@@ -50,6 +50,7 @@
     
     self.playerItem = [AVPlayerItem playerItemWithURL:radioURL];
     self.player = [[AVPlayer alloc] initWithPlayerItem:self.playerItem];
+    
 }
 
 - (void)startPlaying
@@ -78,6 +79,24 @@
         center.nowPlayingInfo = songInfo;
     }
     
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+    if (object == self.player && [keyPath isEqualToString:@"status"])
+    {
+        if (self.player.status == AVPlayerStatusReadyToPlay)
+        {
+            
+        }
+        else if (self.player.status == AVPlayerStatusFailed)
+        {
+            // something went wrong. player.error should contain some information
+        }
+    }
 }
 
 @end

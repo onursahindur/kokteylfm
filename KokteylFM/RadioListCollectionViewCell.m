@@ -7,12 +7,13 @@
 //
 
 #import "RadioListCollectionViewCell.h"
-#import "AudioManager.h"
 #import "RadioTableViewCell.h"
 
 @interface RadioListCollectionViewCell () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (assign, nonatomic) NSInteger currentStationIndex;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeightConstraint;
 
 @end
 
@@ -32,6 +33,9 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableViewHeightConstraint.constant = 70 * self.radioURLList.count;
+    
+    self.currentStationIndex = 0;
 }
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource
@@ -58,11 +62,23 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.currentStationIndex = indexPath.row;
+    __weak typeof (self) weakSelf = self;
+    [UIView animateWithDuration:2.0 animations:^{
+        weakSelf.layer.backgroundColor = [weakSelf colorFromHexString:weakSelf.radioHexColorList[indexPath.row]].CGColor;
+        [weakSelf layoutIfNeeded];
+    } completion:nil];
     NSString *radioURLString = self.radioURLList[indexPath.row];
-    [[AudioManager sharedInstance] prepareToPlay:[NSURL URLWithString:radioURLString]];
-    [[AudioManager sharedInstance] changeNowPlayingInfo:self.radioTitleList[indexPath.row]
-                                               songName:@"SONG"];
-    [[AudioManager sharedInstance] startPlaying];
+    if ([self.delegate respondsToSelector:@selector(radioListCollectionViewCell:
+                                                    didSelectRadio:
+                                                    withRadioName:
+                                                    withBackgroundColor:)])
+    {
+        [self.delegate radioListCollectionViewCell:self
+                                    didSelectRadio:[NSURL URLWithString:radioURLString]
+                                     withRadioName:self.radioTitleList[indexPath.row]
+                               withBackgroundColor:[self colorFromHexString:self.radioHexColorList[indexPath.row]]];
+    }
 }
 
 - (UIColor *)colorFromHexString:(NSString *)hexString
@@ -72,6 +88,60 @@
     [scanner setScanLocation:1]; // bypass '#' character
     [scanner scanHexInt:&rgbValue];
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
+}
+
+#pragma mark - public
+- (NSURL *)currentStationURL
+{
+    return [NSURL URLWithString:self.radioURLList[self.currentStationIndex]];
+}
+
+- (NSURL *)nextStationURL
+{
+    if (self.currentStationIndex == self.radioURLList.count - 1)
+    {
+        return nil;
+    }
+    self.currentStationIndex++;
+    NSLog(@"%ld", (long)self.currentStationIndex);
+    [UIView animateWithDuration:2.0 animations:^{
+        self.layer.backgroundColor = [self colorFromHexString:self.radioHexColorList[self.currentStationIndex]].CGColor;
+        [self layoutIfNeeded];
+    } completion:nil];
+    return [NSURL URLWithString:self.radioURLList[self.currentStationIndex]];
+}
+
+- (NSURL *)previousStationURL
+{
+    if (self.currentStationIndex == 0)
+    {
+        return nil;
+    }
+    self.currentStationIndex--;
+    NSLog(@"%ld", (long)self.currentStationIndex);
+    [UIView animateWithDuration:2.0 animations:^{
+        self.layer.backgroundColor = [self colorFromHexString:self.radioHexColorList[self.currentStationIndex]].CGColor;
+        [self layoutIfNeeded];
+    } completion:nil];
+    return [NSURL URLWithString:self.radioURLList[self.currentStationIndex]];
+}
+
+- (BOOL)hasMoreNext
+{
+    if (self.currentStationIndex == self.radioURLList.count - 1)
+    {
+        return NO;
+    }
+    return YES;
+}
+
+- (BOOL)hasMorePrev
+{
+    if (self.currentStationIndex == 0)
+    {
+        return NO;
+    }
+    return YES;
 }
 
 @end

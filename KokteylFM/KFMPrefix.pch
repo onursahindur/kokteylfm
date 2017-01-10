@@ -14,5 +14,10 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import "SVProgressHUD.h"
+#import "MBProgressHUD.h"
+
+static NSString *const kRadioStartedPlayingKey = @"RadioStartedPlaying";
+static NSString *const kRadioStoppedPlayingKey = @"RadioStoppedPlaying";
 
 #endif /* KFMPrefix_pch */

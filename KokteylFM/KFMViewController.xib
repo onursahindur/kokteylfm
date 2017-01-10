@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,17 +15,20 @@
                 <outlet property="chatButton" destination="w8Z-yh-nhb" id="hGO-qk-kJh"/>
                 <outlet property="collectionView" destination="LdO-Jq-wL2" id="kwg-3a-HKU"/>
                 <outlet property="mediaView" destination="H8a-dC-A2G" id="Un6-sC-bwr"/>
+                <outlet property="nextStationButton" destination="tdV-lc-TMv" id="vM5-2T-rgj"/>
+                <outlet property="playButton" destination="gvz-XF-Jjd" id="NVz-2r-ckJ"/>
+                <outlet property="prevStationButton" destination="TjP-Tc-8Ai" id="L1M-Z5-TbK"/>
                 <outlet property="radioListButton" destination="eaH-8J-7aZ" id="j9g-z3-4eA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9NC-c7-ODn">
-                    <rect key="frame" x="0.0" y="518" width="320" height="50"/>
+                    <rect key="frame" x="0.0" y="419" width="265" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rs9-1j-c6A">
                             <rect key="frame" x="278" y="8" width="34" height="34"/>
@@ -41,10 +44,10 @@
                         <constraint firstAttribute="height" constant="50" id="qm7-w9-QDZ"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vhC-he-laC">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vhC-he-laC">
                     <rect key="frame" x="0.0" y="488" width="320" height="80"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eaH-8J-7aZ">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eaH-8J-7aZ">
                             <rect key="frame" x="23" y="22" width="35" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="cQr-f2-suD"/>
@@ -55,23 +58,32 @@
                                 <action selector="tappedButton:" destination="-1" eventType="touchUpInside" id="1PA-Nb-frh"/>
                             </connections>
                         </button>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H8a-dC-A2G">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8a-dC-A2G">
                             <rect key="frame" x="81" y="0.0" width="158" height="80"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvz-XF-Jjd">
                                     <rect key="frame" x="62" y="23" width="34" height="34"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" backgroundImage="play"/>
+                                    <connections>
+                                        <action selector="tappedMediaButtons:" destination="-1" eventType="touchUpInside" id="yev-qt-aoh"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdV-lc-TMv">
                                     <rect key="frame" x="104" y="23" width="34" height="34"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" backgroundImage="next"/>
+                                    <connections>
+                                        <action selector="tappedMediaButtons:" destination="-1" eventType="touchUpInside" id="dwc-du-Nxa"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TjP-Tc-8Ai">
                                     <rect key="frame" x="20" y="23" width="34" height="34"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" backgroundImage="back"/>
+                                    <connections>
+                                        <action selector="tappedMediaButtons:" destination="-1" eventType="touchUpInside" id="VLh-p3-LMl"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -80,7 +92,7 @@
                                 <constraint firstAttribute="height" constant="80" id="c7B-UC-4wS"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8Z-yh-nhb">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8Z-yh-nhb">
                             <rect key="frame" x="262" y="22" width="35" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="35" id="DEc-Wj-Oig"/>
@@ -103,7 +115,7 @@
                         <constraint firstItem="eaH-8J-7aZ" firstAttribute="top" secondItem="vhC-he-laC" secondAttribute="top" constant="22" id="uhh-93-pUK"/>
                     </constraints>
                 </view>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="LdO-Jq-wL2">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="LdO-Jq-wL2">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="488"/>
                     <color key="backgroundColor" red="0.90659940242767334" green="0.90657222270965576" blue="0.90658760070800781" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="zpX-Sq-JgU">
@@ -135,10 +147,10 @@
         </view>
     </objects>
     <resources>
-        <image name="back" width="128" height="128"/>
+        <image name="back" width="64" height="64"/>
         <image name="chat" width="64" height="64"/>
         <image name="list" width="64" height="64"/>
-        <image name="next" width="128" height="128"/>
-        <image name="play" width="128" height="128"/>
+        <image name="next" width="64" height="64"/>
+        <image name="play" width="64" height="64"/>
     </resources>
 </document>
