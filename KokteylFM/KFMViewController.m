@@ -54,6 +54,13 @@
     self.prevStationButton.enabled = NO;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    [self becomeFirstResponder];
+}
+
 #pragma mark - UICollectionView Delegate & DataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -123,14 +130,18 @@
     else if (sender == self.nextStationButton)
     {
         RadioListCollectionViewCell *cell = (RadioListCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-        [self startPlaying:[cell nextStationURL] radioName:@""];
+        [self startPlaying:[cell nextStationURL]
+                 radioName:[cell currentStationTitle]
+                 imageName:[cell currentStationImage]];
         self.nextStationButton.enabled = [cell hasMoreNext];
         self.prevStationButton.enabled = YES;
     }
     else if (sender == self.prevStationButton)
     {
         RadioListCollectionViewCell *cell = (RadioListCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-        [self startPlaying:[cell previousStationURL] radioName:@""];
+        [self startPlaying:[cell previousStationURL]
+                 radioName:[cell currentStationTitle]
+                 imageName:[cell currentStationImage]];
         self.nextStationButton.enabled = YES;
         self.prevStationButton.enabled = [cell hasMorePrev];
     }
@@ -160,6 +171,7 @@
 - (void)radioListCollectionViewCell:(RadioListCollectionViewCell *)cell
                      didSelectRadio:(NSURL *)radioURL
                       withRadioName:(NSString *)radioName
+                          imageName:(NSString *)radioImageName
                 withBackgroundColor:(UIColor *)color
 {
     self.currentStationURL = radioURL;
@@ -167,23 +179,26 @@
     [self setPlayingButtonState:YES];
     self.nextStationButton.enabled = [cell hasMoreNext];
     self.prevStationButton.enabled = [cell hasMorePrev];
-    __weak typeof (self) weakSelf = self;
-    [UIView animateWithDuration:2.0 animations:^{
-        weakSelf.barView.layer.backgroundColor = color.CGColor;
-        [weakSelf.view layoutIfNeeded];
-    } completion:nil];
+//    __weak typeof (self) weakSelf = self;
+//    [UIView animateWithDuration:2.0 animations:^{
+//        weakSelf.barView.layer.backgroundColor = color.CGColor;
+//        [weakSelf.view layoutIfNeeded];
+//    } completion:nil];
     [self startPlaying:radioURL
-             radioName:radioName];
+             radioName:radioName
+             imageName:radioImageName];
 }
 
 
 #pragma mark - Helpers
 - (void)startPlaying:(NSURL *)radioURL
            radioName:(NSString *)radioName
+           imageName:(NSString *)radioImageName
 {
     [[AudioManager sharedInstance] prepareToPlay:radioURL];
     [[AudioManager sharedInstance] changeNowPlayingInfo:@"Kokteyl FM"
-                                               songName:radioName];
+                                               songName:radioName
+                                              imageName:radioImageName];
     [[AudioManager sharedInstance] startPlaying];
 }
 
@@ -195,6 +210,24 @@
         imageName = @"pause";
     }
     [self.playButton setBackgroundImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+}
+
+#pragma mark - Remote Controls
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event
+{
+    if (event.subtype == UIEventSubtypeRemoteControlPlay
+        || event.subtype == UIEventSubtypeRemoteControlPause)
+    {
+        [self tappedMediaButtons:self.playButton];
+    }
+    else if (event.subtype == UIEventSubtypeRemoteControlNextTrack)
+    {
+        [self tappedMediaButtons:self.nextStationButton];
+    }
+    else if (event.subtype == UIEventSubtypeRemoteControlPreviousTrack)
+    {
+        [self tappedMediaButtons:self.prevStationButton];
+    }
 }
 
 @end

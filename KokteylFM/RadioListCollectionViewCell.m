@@ -14,6 +14,12 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (assign, nonatomic) NSInteger currentStationIndex;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *logoImageViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *logoImageViewWidthConstraint;
+
+
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+@property (weak, nonatomic) IBOutlet UILabel *radioDescriptionLabel;
 
 @end
 
@@ -24,6 +30,7 @@
     [super awakeFromNib];
     
     self.radioTitleList = @[@"EG Radyo", @"AnatolianFunk", @"TalkyRadio", @"Hypenoise", @"Reklamsız Türk Sanat"].mutableCopy;
+    self.radioDescriptionList = @[@"\"Sadece Kaliteli Müzik\"", @"AnatolianFunk", @"TalkyRadio", @"Hypenoise", @"Reklamsız!"].mutableCopy;
     self.radioURLList = @[@"https://kokteyl.fm/egradyo.pls", @"https://kokteyl.fm/anatolianfunk.pls", @"https://kokteyl.fm/talkyradio.pls", @"https://kokteyl.fm/hypenoise.pls", @"https://kokteyl.fm/reklamsizturksanat.pls"].mutableCopy;
     self.radioImageViewList = @[@"egradio_logo", @"anatolianradio_logo", @"talkyradio_logo", @"hypenoise_logo", @"sanatradio_logo"].mutableCopy;
     self.radioHexColorList = @[@"#b01719", @"#d0457e", @"#28b7c0", @"#2a2a2a", @"#5a3006"].mutableCopy;
@@ -36,6 +43,25 @@
     self.tableViewHeightConstraint.constant = 70 * self.radioURLList.count;
     
     self.currentStationIndex = 0;
+    
+    if (IS_IPHONE_4)
+    {
+        self.logoImageViewHeightConstraint.constant = 50.0f;
+        self.logoImageViewWidthConstraint.constant  = 50.0f;
+    }
+    if (IS_IPHONE_5)
+    {
+        self.logoImageViewHeightConstraint.constant = 75.0f;
+        self.logoImageViewWidthConstraint.constant  = 75.0f;
+    }
+    
+    self.logoImageView.layer.cornerRadius = self.logoImageViewWidthConstraint.constant / 2;
+    self.logoImageView.clipsToBounds = YES;
+    self.logoImageView.layer.borderWidth = 5.0f;
+    self.logoImageView.layer.borderColor = [UIColor whiteColor].CGColor;
+    
+    self.layer.backgroundColor = [self colorFromHexString:[self.radioHexColorList firstObject]].CGColor;
+    [self.radioDescriptionLabel setText:[self.radioDescriptionList firstObject]];
 }
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource
@@ -63,20 +89,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.currentStationIndex = indexPath.row;
-    __weak typeof (self) weakSelf = self;
-    [UIView animateWithDuration:2.0 animations:^{
-        weakSelf.layer.backgroundColor = [weakSelf colorFromHexString:weakSelf.radioHexColorList[indexPath.row]].CGColor;
-        [weakSelf layoutIfNeeded];
-    } completion:nil];
+    [self animateUIWithIndex:indexPath.row];
+    
     NSString *radioURLString = self.radioURLList[indexPath.row];
     if ([self.delegate respondsToSelector:@selector(radioListCollectionViewCell:
                                                     didSelectRadio:
                                                     withRadioName:
+                                                    imageName:
                                                     withBackgroundColor:)])
     {
         [self.delegate radioListCollectionViewCell:self
                                     didSelectRadio:[NSURL URLWithString:radioURLString]
                                      withRadioName:self.radioTitleList[indexPath.row]
+                                         imageName:self.radioImageViewList[indexPath.row]
                                withBackgroundColor:[self colorFromHexString:self.radioHexColorList[indexPath.row]]];
     }
 }
@@ -103,11 +128,7 @@
         return nil;
     }
     self.currentStationIndex++;
-    NSLog(@"%ld", (long)self.currentStationIndex);
-    [UIView animateWithDuration:2.0 animations:^{
-        self.layer.backgroundColor = [self colorFromHexString:self.radioHexColorList[self.currentStationIndex]].CGColor;
-        [self layoutIfNeeded];
-    } completion:nil];
+    [self animateUIWithIndex:self.currentStationIndex];
     return [NSURL URLWithString:self.radioURLList[self.currentStationIndex]];
 }
 
@@ -118,12 +139,18 @@
         return nil;
     }
     self.currentStationIndex--;
-    NSLog(@"%ld", (long)self.currentStationIndex);
-    [UIView animateWithDuration:2.0 animations:^{
-        self.layer.backgroundColor = [self colorFromHexString:self.radioHexColorList[self.currentStationIndex]].CGColor;
-        [self layoutIfNeeded];
-    } completion:nil];
+    [self animateUIWithIndex:self.currentStationIndex];
     return [NSURL URLWithString:self.radioURLList[self.currentStationIndex]];
+}
+
+- (NSString *)currentStationTitle
+{
+    return [self.radioTitleList objectAtIndex:self.currentStationIndex];
+}
+
+- (NSString *)currentStationImage
+{
+    return [self.radioImageViewList objectAtIndex:self.currentStationIndex];
 }
 
 - (BOOL)hasMoreNext
@@ -142,6 +169,32 @@
         return NO;
     }
     return YES;
+}
+
+#pragma mark - private
+- (void)animateUIWithIndex:(NSInteger)index
+{
+    __weak typeof (self) weakSelf = self;
+    [UIView animateWithDuration:1.5f animations:^{
+        weakSelf.layer.backgroundColor = [weakSelf colorFromHexString:weakSelf.radioHexColorList[index]].CGColor;
+        [weakSelf layoutIfNeeded];
+    } completion:nil];
+    
+    [UIView transitionWithView:self.logoImageView
+                      duration:1.5f
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{
+                        [weakSelf.logoImageView setImage:[UIImage imageNamed:weakSelf.radioImageViewList[index]]];
+                        [weakSelf layoutIfNeeded];
+                    } completion:nil];
+    
+    [UIView transitionWithView:self.radioDescriptionLabel
+                      duration:1.5f
+                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                    animations:^{
+                        [weakSelf.radioDescriptionLabel setText:weakSelf.radioDescriptionList[index]];
+                        [weakSelf layoutIfNeeded];
+                    } completion:nil];
 }
 
 @end

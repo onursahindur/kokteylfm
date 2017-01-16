@@ -22,6 +22,7 @@
 - (void)startPlaying;
 - (void)pausePlaying;
 - (void)changeNowPlayingInfo:(NSString *)radioName
-                    songName:(NSString *)songName;
+                    songName:(NSString *)songName
+                   imageName:(NSString *)radioImageName;
 
 @end

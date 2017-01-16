@@ -12,6 +12,7 @@
 - (void)radioListCollectionViewCell:(RadioListCollectionViewCell *)cell
                      didSelectRadio:(NSURL *)radioURL
                       withRadioName:(NSString *)radioName
+                          imageName:(NSString *)radioImageName
                 withBackgroundColor:(UIColor *)color;
 
 @end
@@ -19,6 +20,7 @@
 @interface RadioListCollectionViewCell : UICollectionViewCell
 
 @property (strong, nonatomic) NSMutableArray *radioTitleList;
+@property (strong, nonatomic) NSMutableArray *radioDescriptionList;
 @property (strong, nonatomic) NSMutableArray *radioURLList;
 @property (strong, nonatomic) NSMutableArray *radioImageViewList;
 @property (strong, nonatomic) NSMutableArray *radioHexColorList;
@@ -28,6 +30,8 @@
 - (NSURL *)currentStationURL;
 - (NSURL *)nextStationURL;
 - (NSURL *)previousStationURL;
+- (NSString *)currentStationTitle;
+- (NSString *)currentStationImage;
 - (BOOL)hasMoreNext;
 - (BOOL)hasMorePrev;
 
